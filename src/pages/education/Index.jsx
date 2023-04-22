@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // formik
 import { Formik } from "formik";
@@ -9,8 +9,11 @@ import { educationValidationSchema } from "../../components/formikHelpers/valida
 import Header from "../../components/header";
 import Layout from "../../components/layout";
 import MyForm from "./MyForm";
+import Resume from "../cv/Index";
 
 const Education = () => {
+  const [formValues, setFormValues] = useState({});
+
   const onSubmit = (values, formikHelpers) => {
     console.log("values", values);
   };
@@ -23,11 +26,28 @@ const Education = () => {
           initialValues={educationInitialValues}
           onSubmit={onSubmit}
           validationSchema={educationValidationSchema}>
-          {() => {
-            return <MyForm />;
+          {(fields) => {
+            const { values, dirty, isValid, setValues, setFieldValue } = fields;
+            return (
+              <MyForm
+                values={values}
+                dirty={dirty}
+                isValid={isValid}
+                setValues={setValues}
+                setFormValues={setFormValues}
+                setFieldValue={setFieldValue}
+              />
+            );
           }}
         </Formik>
       </div>
+      <Resume
+        personalInfo={JSON.parse(localStorage.getItem("personalValues"))}
+        experiences={
+          JSON.parse(localStorage.getItem("experiences")).experiences
+        }
+        educations={formValues.educations}
+      />
     </Layout>
   );
 };

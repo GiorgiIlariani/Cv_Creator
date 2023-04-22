@@ -7,8 +7,6 @@ const InputComponent = (props) => {
 
   const [field, meta] = useField(name);
 
-  useEffect(() => {}, [field.value]);
-
   const configTextField = {
     ...field,
     label,
@@ -28,10 +26,11 @@ const InputComponent = (props) => {
   return (
     <>
       <TextField {...configTextField} />
-      {hasError && (
+      {hasError ? (
         <ErrorMessage name={name} component="p" className="error-text margin" />
+      ) : (
+        <p style={{ marginTop: "5px" }}>{below_text}</p>
       )}
-      {!hasError && <p style={{ marginTop: "5px" }}>{below_text}</p>}
     </>
   );
 };

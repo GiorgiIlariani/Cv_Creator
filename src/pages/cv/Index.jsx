@@ -1,22 +1,9 @@
-import { useField, useFormikContext, withFormik } from "formik";
-import React, { useEffect, useState } from "react";
-import { personalInitialValues } from "../../components/formikHelpers/initialValues";
+import React from "react";
 import classes from "./styles.module.css";
 
-function Resume({ formValues }) {
-  // uploaded image
-  const [uploadeImage, setUploadedImage] = useState(null);
-
+function Resume({ personalInfo, experiences, educations }) {
   //get values
-  const { name, surname, email, phone_Number, description, image } = formValues;
-
-  const reader = new FileReader();
-  if (image) {
-    reader.readAsDataURL(image);
-  }
-  reader.onload = () => {
-    setUploadedImage(reader.result);
-  };
+  const { name, surname, email, phone_number, about_me, image } = personalInfo;
 
   return (
     <div className={classes["right-side"]}>
@@ -31,20 +18,53 @@ function Resume({ formValues }) {
               <span>{email}</span>
             </p>
           )}
-
-          {phone_Number && (
+          {phone_number && (
             <p>
               <img src="./assets/images/phone.png" alt="phone-icon" />
-              <span>{phone_Number}</span>
+              <span>{phone_number}</span>
             </p>
           )}
-          {description && <h4>ჩემ შესახებ</h4>}
-          <p>{description}</p>
+          {about_me && <h4>ჩემ შესახებ</h4>}
+          <p>{about_me}</p>
         </div>
-        {uploadeImage !== null ? (
-          <img src={uploadeImage} className={classes.photo} alt="person-img" />
-        ) : null}
+        {image && (
+          <img src={image} className={classes.photo} alt="person-img" />
+        )}
       </div>
+      {experiences !== undefined &&
+        experiences.map((data, index) => {
+          return (
+            <div className={classes.experience} key={index}>
+              <h4>გამოცდილება</h4>
+              <p className={classes.position}>
+                {data.position}
+                {data.employer && data.position && ","} {data.employer}
+              </p>
+              <p className={classes.dates}>
+                {data.start_date}
+                {data.start_date && data.due_date && " - "}
+                {data.due_date}
+              </p>
+              <p className={classes.description}>{data.description}</p>
+            </div>
+          );
+        })}
+      {educations !== undefined &&
+        educations.map((data, index) => {
+          return (
+            <div className={classes.education} key={index}>
+              <h4>განათლება</h4>
+              <p className={classes.institute}>
+                {data.institute}
+                {data.degree && data.institute && ","} {data.degree}
+              </p>
+              <p className={classes.dates}>
+                {data.due_date}
+              </p>
+              <p className={classes.description}>{data.description}</p>
+            </div>
+          );
+        })}
     </div>
   );
 }

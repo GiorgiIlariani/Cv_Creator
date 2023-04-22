@@ -10,6 +10,10 @@
     src: url(./assets/font/HelveticaNeue.ttc);
 }
 
+a {
+    text-decoration: none;
+}
+
 /* input in general */
 input {
     width: 100%;
@@ -22,6 +26,10 @@ input {
     color: rgba(0, 0, 0, 0.6);
 }
 
+.error-border {
+   border-color: #b40e0e;
+}
+/* 
 textarea {
     display: flex;
     flex-direction: column;
@@ -56,19 +64,20 @@ textarea {
 
 .textarea label {
     font-weight: 600;
-}
+} */
 
 
 /* left side */
 .left-side {
     width: 57%;
     min-height: 1080px;
+    max-height: auto;
     background: #f9f9f9;
     padding: 0 150px;
 }
 
 /* forms */
-.form-container {
+/* .form-container {
     width: 100%;
     height: auto;
     margin-top: 50px;
@@ -93,11 +102,11 @@ textarea {
 .input-div>p {
     font-weight: 300;
     font-size: 14px;
-}
+} */
 
 
 /* btn more */
-.btn-more {
+/* .btn-more {
     width: 289px;
     background: #62A1EB;
     color: white;
@@ -108,10 +117,10 @@ textarea {
     border-radius: 4px;
     margin-top: 50px;
     cursor: pointer;
-}
+} */
 
 /* validation */
-.invalid input {
+/* .invalid input {
     border: 1px solid #b40e0e;
     background: url('./assets/images/danger.png');
     background-repeat: no-repeat;
@@ -129,7 +138,7 @@ textarea {
 
 .invalid p {
     color: #b40e0e;
-}
+} */
 
 .error-text {
     color: #b40e0e;
@@ -139,7 +148,7 @@ textarea {
     margin-top: 5px;
 }
 
-.success {
+/* .success {
     border-color: #98E37E;
     background: url('./assets/images/success.png');
     background-repeat: no-repeat;
@@ -152,10 +161,10 @@ textarea {
 
 .danger-border {
     border-color: #b40e0e;
-}
+} */
 
 /*  border */
-#border {
+.border {
     border-bottom: 1px solid #C8C8C8;
     padding-bottom: 50px;
 }

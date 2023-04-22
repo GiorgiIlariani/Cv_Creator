@@ -20,8 +20,8 @@ const PersonalInfo = () => {
   const navigate = useNavigate();
 
   const onSubmit = (values, formikHelpers) => {
+    console.log(values);
     navigate("/experience", { replace: true });
-    formikHelpers.resetForm();
   };
 
   return (
@@ -32,19 +32,26 @@ const PersonalInfo = () => {
           initialValues={personalInitialValues}
           validationSchema={personalValidationSchema}
           onSubmit={onSubmit}>
-          {({ values, touched, setFieldValue }) => {
+          {({ values, touched, setFieldValue, setValues }) => {
             return (
               <MyForm
                 values={values}
                 touched={touched}
                 setFieldValue={setFieldValue}
                 setFormValues={setFormValues}
+                setValues={setValues}
               />
             );
           }}
         </Formik>
       </div>
-      <Resume formValues={formValues} />
+      <Resume
+        personalInfo={formValues}
+        experiences={
+          JSON.parse(localStorage.getItem("experiences"))?.experiences
+        }
+        educations={JSON.parse(localStorage.getItem("educations"))?.educations}
+      />
     </Layout>
   );
 };

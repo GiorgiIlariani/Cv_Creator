@@ -1,15 +1,29 @@
 import React, { useEffect } from "react";
 // formik
-import { Form } from "formik";
+import { Field, Form } from "formik";
 
 // mui components
 import { Button, Grid } from "@mui/material";
 import FormControl from "../../components/formikHelpers/FormControl";
 import NextBtn from "../../components/UI/NextBtn";
 
-const MyForm = ({ values, setFormValues, touched, setFieldValue }) => {
+const MyForm = ({
+  values,
+  setFormValues,
+  touched,
+  setFieldValue,
+  setValues,
+}) => {
+  useEffect(() => {
+    const storedValues = JSON.parse(localStorage.getItem("personalValues"));
+    if (storedValues) {
+      setValues(storedValues);
+    }
+  }, []);
+
   useEffect(() => {
     setFormValues(values);
+    localStorage.setItem("personalValues", JSON.stringify(values));
   }, [values]);
 
   return (
@@ -33,6 +47,7 @@ const MyForm = ({ values, setFormValues, touched, setFieldValue }) => {
             below_text="მინიმუმ ორი სიმბოლო, ქართული ასოები"
           />
         </Grid>
+        {/* image */}
         <Grid
           item
           xs={6}
@@ -53,8 +68,14 @@ const MyForm = ({ values, setFormValues, touched, setFieldValue }) => {
               multiple
               type="file"
               name="image"
+              value={undefined}
               onChange={(e) => {
-                setFieldValue("image", e.currentTarget.files[0]);
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                  setFieldValue("image", reader.result);
+                };
               }}
             />
           </Button>
@@ -65,6 +86,7 @@ const MyForm = ({ values, setFormValues, touched, setFieldValue }) => {
             name="about_me"
             label="ჩემ შესახებ(არასავალდებულო)"
             placeholder="ზოგადი ინფო შენს შესახებ"
+            minRows={5}
           />
         </Grid>
         <Grid item xs={12}>
@@ -86,7 +108,13 @@ const MyForm = ({ values, setFormValues, touched, setFieldValue }) => {
           />
         </Grid>
       </Grid>
-      <NextBtn />
+      <Grid
+        item
+        xs={12}
+        display="flex"
+        justifyContent="flex-end">
+        <NextBtn />
+      </Grid>
     </Form>
   );
 };

@@ -1,10 +1,10 @@
 import { Button } from "@mui/material";
 import React from "react";
 
-const NextBtn = () => {
+const BackBtn = () => {
   return (
     <Button
-      type="submit"
+      type="button"
       variant="contained"
       disableElevation
       sx={{
@@ -13,9 +13,9 @@ const NextBtn = () => {
         height: "45px",
         margin: "100px 0",
       }}>
-      შემდეგი
+      უკან
     </Button>
   );
 };
 
-export default NextBtn;
+export default BackBtn;
