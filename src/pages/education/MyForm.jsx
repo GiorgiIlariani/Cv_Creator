@@ -57,6 +57,7 @@ const MyForm = ({
                         setFieldValue={setFieldValue}
                         name={`educations[${index}].degree`}
                         value={value.degree}
+                        id={`educations[${index}].degree_id`}
                       />
                     </Grid>
                     <Grid item xs={6}>

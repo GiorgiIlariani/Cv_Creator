@@ -27,6 +27,7 @@ export const educationInitialValues = {
     {
       institute: "",
       degree: "",
+      degree_id: null,
       due_date: "",
       description: "",
     },

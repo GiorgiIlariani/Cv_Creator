@@ -82,20 +82,18 @@ const MyForm = ({
                       />
                     </Grid>
                     {/* textarea */}
-                    <Grid
-                      item
-                      xs={12}
-                      borderBottom="1px solid #C1C1C1"
-                      paddingBottom="50px">
+                    <Grid item xs={12} paddingBottom="50px">
                       <FormControl
                         control="textarea"
                         name={`experiences[${index}].description`}
                         label="აღწერა"
                         placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
-                        minRows={6}
+                        minRows={7}
                       />
                     </Grid>
-
+                    <Grid item xs={12}>
+                      <hr />
+                    </Grid>
                     <Grid item>
                       <Button
                         type="button"

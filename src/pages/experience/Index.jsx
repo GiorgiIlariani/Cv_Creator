@@ -19,7 +19,7 @@ const Experience = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = (values, formikHelpers) => {
+  const onSubmit = () => {
     navigate("/education", { replace: true });
   };
 
@@ -33,7 +33,6 @@ const Experience = () => {
           validationSchema={experienceValidationSchema}>
           {(fields) => {
             const { values, setValues, dirty, isValid, setFieldValue } = fields;
-            console.log(values);
             return (
               <MyForm
                 values={values}

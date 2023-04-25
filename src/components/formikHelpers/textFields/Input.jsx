@@ -25,7 +25,18 @@ const InputComponent = (props) => {
 
   return (
     <>
-      <TextField {...configTextField} />
+      <TextField
+        {...configTextField}
+        sx={{
+          "& input:valid:focus": {
+            borderColor: meta.touched && !meta.error ? "#98E37E" : "",
+          },
+          "& input:valid ~ fieldset": {
+            borderColor: meta.touched && !meta.error ? "#98E37E" : "",
+          },
+        }}
+      />
+
       {hasError ? (
         <ErrorMessage name={name} component="p" className="error-text margin" />
       ) : (

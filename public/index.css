@@ -18,7 +18,7 @@ a {
 input {
     width: 100%;
     border: 1px solid #BCBCBC;
-    margin: 8px 0;
+    /* margin: 8px 0; */
     padding: 14px 16px;
     border-radius: 4px;
     font-size: 16px;
@@ -28,6 +28,14 @@ input {
 
 .error-border {
    border-color: #b40e0e;
+}
+
+.input-error {
+    border: 1px solid crimson;
+}
+
+.input-success {
+    border: 1px solid #98E37E;
 }
 /* 
 textarea {
@@ -147,6 +155,7 @@ textarea {
 .margin {
     margin-top: 5px;
 }
+
 
 /* .success {
     border-color: #98E37E;

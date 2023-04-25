@@ -26,6 +26,18 @@ const MyForm = ({
     localStorage.setItem("personalValues", JSON.stringify(values));
   }, [values]);
 
+  const handleImageInputChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    //reader.readAsDataURL(file);
+    //reader.readAsArrayBuffer(file);
+    reader.onload = (e) => {
+      setFieldValue("image", e.target.result);
+    };
+
+    reader.readAsBinaryString(file);
+  };
+
   return (
     <Form autoComplete="off" style={{ position: "relative" }}>
       <Grid container spacing={5} paddingTop="70px">
@@ -69,14 +81,7 @@ const MyForm = ({
               type="file"
               name="image"
               value={undefined}
-              onChange={(e) => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                  setFieldValue("image", reader.result);
-                };
-              }}
+              onChange={handleImageInputChange}
             />
           </Button>
         </Grid>
@@ -86,7 +91,7 @@ const MyForm = ({
             name="about_me"
             label="ჩემ შესახებ(არასავალდებულო)"
             placeholder="ზოგადი ინფო შენს შესახებ"
-            minRows={5}
+            minRows={6}
           />
         </Grid>
         <Grid item xs={12}>
@@ -103,16 +108,12 @@ const MyForm = ({
             control="input"
             name="phone_number"
             label="მობილურის ნომერი"
-            placeholder="+995 598 91 14 52"
+            placeholder="+995598911452"
             below_text="უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს"
           />
         </Grid>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        display="flex"
-        justifyContent="flex-end">
+      <Grid item xs={12} display="flex" justifyContent="flex-end">
         <NextBtn />
       </Grid>
     </Form>

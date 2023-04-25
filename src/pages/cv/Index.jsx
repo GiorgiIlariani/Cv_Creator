@@ -3,7 +3,8 @@ import classes from "./styles.module.css";
 
 function Resume({ personalInfo, experiences, educations }) {
   //get values
-  const { name, surname, email, phone_number, about_me, image } = personalInfo;
+  const { name, surname, email, phone_number, about_me, image } =
+    personalInfo !== null ? personalInfo : {};
 
   return (
     <div className={classes["right-side"]}>
@@ -58,13 +59,16 @@ function Resume({ personalInfo, experiences, educations }) {
                 {data.institute}
                 {data.degree && data.institute && ","} {data.degree}
               </p>
-              <p className={classes.dates}>
-                {data.due_date}
-              </p>
+              <p className={classes.dates}>{data.due_date}</p>
               <p className={classes.description}>{data.description}</p>
             </div>
           );
         })}
+      {/* <img
+        className={classes["footer-logo"]}
+        src="./assets/images/cv-footer-logo.png"
+        alt="redberry-footer-logo"
+      /> */}
     </div>
   );
 }

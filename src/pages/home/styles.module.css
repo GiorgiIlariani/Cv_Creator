@@ -25,9 +25,11 @@
     position: absolute;
     margin-top: 4rem;
     margin-left: 18rem;
+    z-index: -1;
 }
 
 .home main button {
+    z-index: 1;
     width: 464px;
     padding: 18px 60px;
     border-radius: 8px;

@@ -4,7 +4,7 @@ const patterns = {
   name: /^[ა-ჰ]{2,}$/,
   surname: /^[ა-ჰ]{2,}$/,
   mail: /^[a-zA-Z\d\.-]+@redberry\.ge$/,
-  phoneNumber: /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/,
+  phoneNumber: /^\+9955\d{8}$/,
 };
 
 export const personalValidationSchema = Yup.object().shape({

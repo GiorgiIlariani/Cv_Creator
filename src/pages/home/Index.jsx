@@ -7,10 +7,9 @@ import { Link } from "react-router-dom";
 import classes from "./styles.module.css";
 
 const HomePage = () => {
-
-    useEffect(() => {
-        document.body.style.backgroundColor = '#fff';
-    }, [])
+  useEffect(() => {
+    document.body.style.backgroundColor = "#fff";
+  }, []);
 
   return (
     <div className={classes.home}>
@@ -19,7 +18,7 @@ const HomePage = () => {
       </header>
       <main>
         <Link to="/personalInfo">
-          <button className={classes.btn}>რეზიუმეს დამატება</button>
+          <button>რეზიუმეს დამატება</button>
         </Link>
         <img src="./assets/images/homePage.png" alt="background logo" />
       </main>

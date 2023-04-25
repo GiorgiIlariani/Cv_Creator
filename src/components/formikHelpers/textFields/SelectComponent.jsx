@@ -10,10 +10,19 @@ import {
 import { useField } from "formik";
 const url = "https://resume.redberryinternship.ge/api/degrees";
 
-const SelectComponent = ({ setFieldValue, name, value }) => {
+const SelectComponent = ({ setFieldValue, name, value, id }) => {
   const [selectValues, setSelectValues] = useState([]);
 
   const [field, meta] = useField(name);
+
+  const handleChange = (e) => {
+    const selectValue = e.target.value;
+    const selectOptionId = selectValues.find(
+      (item) => item.title === selectValue
+    ).id;
+    setFieldValue(name, e.target.value);
+    setFieldValue(id, selectOptionId);
+  };
 
   useEffect(() => {
     axios
@@ -26,9 +35,18 @@ const SelectComponent = ({ setFieldValue, name, value }) => {
       });
   }, []);
 
-
   return (
-    <FormControl fullWidth error={meta.touched && value === ""}>
+    <FormControl
+      fullWidth
+      error={meta.touched && value === ""}
+      sx={{
+        "& input:valid:focus": {
+          borderColor: meta.touched && !meta.error ? "#98E37E" : "",
+        },
+        "& input:valid ~ fieldset": {
+          borderColor: meta.touched && !meta.error ? "#98E37E" : "",
+        },
+      }}>
       <InputLabel id="multiple-quality">აირჩიეთ ხარისხი</InputLabel>
       <Select
         {...field}
@@ -36,15 +54,15 @@ const SelectComponent = ({ setFieldValue, name, value }) => {
         id="multiple-quality"
         defaultValue=""
         value={value}
-        onChange={(e) => {
-          setFieldValue(name, e.target.value);
-        }}
+        onChange={handleChange}
         input={<OutlinedInput label="აირჩიეთ ხარისხი" />}>
-        {selectValues.map((eachValue) => (
-          <MenuItem key={eachValue.id} value={eachValue.title}>
-            {eachValue.title}
-          </MenuItem>
-        ))}
+        {selectValues.map((eachValue) => {
+          return (
+            <MenuItem key={eachValue.id} value={eachValue.title}>
+              {eachValue.title}
+            </MenuItem>
+          );
+        })}
       </Select>
     </FormControl>
   );

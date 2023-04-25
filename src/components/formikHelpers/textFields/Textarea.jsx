@@ -14,7 +14,7 @@ const TextareaComponent = (props) => {
         name={name}
         {...field}
         placeholder={placeholder}
-        sx={{ marginTop: "10px"}}
+        sx={{ marginTop: "10px" }}
       />
     </>
   );
