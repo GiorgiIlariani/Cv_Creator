@@ -4,7 +4,11 @@ import { Field, Form } from "formik";
 
 // mui components
 import { Button, Grid } from "@mui/material";
+
+// helpers
 import FormControl from "../../components/formikHelpers/FormControl";
+
+// buttons
 import NextBtn from "../../components/UI/NextBtn";
 
 const MyForm = ({
@@ -29,13 +33,11 @@ const MyForm = ({
   const handleImageInputChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-    //reader.readAsDataURL(file);
-    //reader.readAsArrayBuffer(file);
-    reader.onload = (e) => {
-      setFieldValue("image", e.target.result);
+    reader.onload = () => {
+      setFieldValue("image", reader.result);
     };
 
-    reader.readAsBinaryString(file);
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -60,19 +62,17 @@ const MyForm = ({
           />
         </Grid>
         {/* image */}
-        <Grid
-          item
-          xs={6}
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between">
+        <Grid item xs={6} display="flex" alignItems="center">
           <label
             className={`${
               touched.image && values.image === "" ? "error-text" : undefined
             }`}>
             პირადი ფოტოს ატვირთვა
           </label>
-          <Button variant="contained" component="label">
+          <Button
+            variant="contained"
+            component="label"
+            sx={{ margin: "0 40px" }}>
             ატვირთვა
             <input
               hidden
@@ -84,6 +84,11 @@ const MyForm = ({
               onChange={handleImageInputChange}
             />
           </Button>
+          {touched.image && values.image === "" ? (
+            <img src="./assets/images/danger.png" alt="danger" />
+          ) : touched.image && values.image !== "" ? (
+            <img src="./assets/images/success.png" alt="danger" />
+          ) : null}
         </Grid>
         <Grid item xs={12}>
           <FormControl

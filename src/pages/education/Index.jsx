@@ -6,41 +6,26 @@ import { Formik } from "formik";
 //helper functions
 import { educationInitialValues } from "../../components/formikHelpers/initialValues";
 import { educationValidationSchema } from "../../components/formikHelpers/validationSchema";
+
+// header and layout
 import Header from "../../components/header";
 import Layout from "../../components/layout";
+
+// form
 import MyForm from "./MyForm";
+
+// main resume
 import Resume from "../cv/Index";
-import axios from "axios";
+
+// for navigating
+import { useNavigate } from "react-router-dom";
 
 const Education = () => {
   const [formValues, setFormValues] = useState({});
+  const navigate = useNavigate();
 
   const onSubmit = () => {
-    const savedPersonalInfo = JSON.parse(
-      localStorage.getItem("personalValues")
-    );
-    const savedExperience = JSON.parse(localStorage.getItem("experiences"));
-    const savedEducation = JSON.parse(localStorage.getItem("educations"));
-    const { degree, ...modifiedSavedEducation } = savedEducation;
-
-    const values = Object.assign(
-      {},
-      savedPersonalInfo,
-      savedExperience,
-      modifiedSavedEducation
-    );
-
-    axios
-      .post("https://resume.redberryinternship.ge/api/cvs", values)
-      .then((response) => {
-        console.log(response);
-        // handle the response from the server
-      })
-      .catch((error) => {
-        console.error(error);
-        // handle the error
-      });
-    // navigate("/finishedResume", { replace: true });
+    navigate("/finishedResume", { replace: true });
   };
 
   return (

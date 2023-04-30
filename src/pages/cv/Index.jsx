@@ -1,7 +1,6 @@
-import React from "react";
 import classes from "./styles.module.css";
 
-function Resume({ personalInfo, experiences, educations }) {
+function Resume({ personalInfo, experiences, educations, status }) {
   //get values
   const { name, surname, email, phone_number, about_me, image } =
     personalInfo !== null ? personalInfo : {};
@@ -64,11 +63,16 @@ function Resume({ personalInfo, experiences, educations }) {
             </div>
           );
         })}
-      {/* <img
-        className={classes["footer-logo"]}
+
+      <img
+        className={
+          status === 201
+            ? classes["finishedResume-logo"]
+            : classes["footer-logo"]
+        }
         src="./assets/images/cv-footer-logo.png"
         alt="redberry-footer-logo"
-      /> */}
+      />
     </div>
   );
 }

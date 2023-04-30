@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
+
+// formik
 import { useField } from "formik";
 
 const DatePickerComponent = (props) => {
@@ -9,12 +11,14 @@ const DatePickerComponent = (props) => {
 
   return (
     <React.Fragment>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={name} style={{ fontWeight: "600" }}>
+        {label}
+      </label>
       <input
         className={`${
           hasError
             ? "input-error"
-            : meta.touched && !meta.error
+            : !meta.error && field.value !== ""
             ? "input-success"
             : ""
         }`}
@@ -31,6 +35,7 @@ const DatePickerComponent = (props) => {
           borderRadius: "4px",
           fontSize: "18px",
           background: "transparent",
+          marginTop: "8px",
         }}
       />
     </React.Fragment>

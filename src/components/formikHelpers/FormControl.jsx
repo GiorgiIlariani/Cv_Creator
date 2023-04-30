@@ -1,4 +1,5 @@
-import React from "react";
+
+// TextFields
 import InputComponent from "./textFields/Input";
 import TextareaComponent from "./textFields/Textarea";
 import DatePickerComponent from "./textFields/DatePickerComponent";

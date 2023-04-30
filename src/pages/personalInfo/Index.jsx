@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 
-// helper components
+// header and alyout
 import Header from "../../components/header";
 import Layout from "../../components/layout";
+
+// main resume
 import Resume from "../cv/Index";
+
+// helper components
 import { personalInitialValues } from "../../components/formikHelpers/initialValues";
 import { personalValidationSchema } from "../../components/formikHelpers/validationSchema";
+
 // navigation
 import { useNavigate } from "react-router-dom";
 

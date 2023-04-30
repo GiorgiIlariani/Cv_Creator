@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+
+// axios
 import axios from "axios";
+
+// mui material
 import {
   FormControl,
   InputLabel,
@@ -7,7 +11,11 @@ import {
   OutlinedInput,
   Select,
 } from "@mui/material";
+
+// formik
 import { useField } from "formik";
+
+// deadline
 const url = "https://resume.redberryinternship.ge/api/degrees";
 
 const SelectComponent = ({ setFieldValue, name, value, id }) => {
@@ -41,10 +49,10 @@ const SelectComponent = ({ setFieldValue, name, value, id }) => {
       error={meta.touched && value === ""}
       sx={{
         "& input:valid:focus": {
-          borderColor: meta.touched && !meta.error ? "#98E37E" : "",
+          borderColor: !meta.error && field.value !== "" ? "#98E37E" : "",
         },
         "& input:valid ~ fieldset": {
-          borderColor: meta.touched && !meta.error ? "#98E37E" : "",
+          borderColor: !meta.error && field.value !== "" ? "#98E37E" : "",
         },
       }}>
       <InputLabel id="multiple-quality">აირჩიეთ ხარისხი</InputLabel>

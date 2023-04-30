@@ -1,5 +1,9 @@
 import React from "react";
+
+// mui material
 import { Textarea } from "@mui/joy";
+
+// formik
 import { useField } from "formik";
 
 const TextareaComponent = (props) => {
@@ -8,7 +12,9 @@ const TextareaComponent = (props) => {
 
   return (
     <>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={name} style={{ fontWeight: "600" }}>
+        {label}
+      </label>
       <Textarea
         minRows={minRows}
         name={name}

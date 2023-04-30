@@ -7,6 +7,7 @@ const patterns = {
   phoneNumber: /^\+9955\d{8}$/,
 };
 
+// validation for first page
 export const personalValidationSchema = Yup.object().shape({
   name: Yup.string()
     .matches(patterns.name, "მინიმუმ ორი სიმბოლო, ქართული ასოები")
@@ -26,6 +27,8 @@ export const personalValidationSchema = Yup.object().shape({
     .required("უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს"),
 });
 
+// validation second first page
+
 export const experienceValidationSchema = Yup.object().shape({
   experiences: Yup.array().of(
     Yup.object().shape({
@@ -40,6 +43,8 @@ export const experienceValidationSchema = Yup.object().shape({
     })
   ),
 });
+
+// validation for third page
 
 export const educationValidationSchema = Yup.object().shape({
   educations: Yup.array().of(

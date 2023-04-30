@@ -1,26 +1,27 @@
 // mui material
 import { Button } from "@mui/material";
 
-const AddMoreBtn = ({ dirty, isValid, push, formObj }) => {
+const RemoveBtn = ({ index, remove, length }) => {
   return (
     <Button
       variant="contained"
       type="button"
-      onClick={() => dirty && isValid && push(formObj)}
+      onClick={() => length !== 1 && remove(index)}
       disableElevation
+      disabled={length === 1}
       sx={{
         width: "289px",
         "&:hover": {
-          backgroundColor: "#62A1EB", // remove hover effect color
+          backgroundColor: "crimson",
         },
-        backgroundColor: "#62A1EB",
+        backgroundColor: "crimson",
         margin: "50px 0",
         padding: "12px 0",
         letterSpacing: "1px",
       }}>
-      ახალი გამოცდილების დამატება
+      გამოცდილების წაშლა
     </Button>
   );
 };
 
-export default AddMoreBtn;
+export default RemoveBtn;

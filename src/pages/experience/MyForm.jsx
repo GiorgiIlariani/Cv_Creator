@@ -6,9 +6,16 @@ import { Button, Grid } from "@mui/material";
 // formik
 import { FieldArray, Form } from "formik";
 
+// helpers
 import FormControl from "../../components/formikHelpers/FormControl";
+
+//buttons
 import BackBtn from "../../components/UI/BackBtn";
 import NextBtn from "../../components/UI/NextBtn";
+import AddMoreBtn from "../../components/UI/AddMoreBtn";
+import RemoveBtn from "../../components/UI/RemoveBtn";
+
+// router link
 import { Link } from "react-router-dom";
 
 const MyForm = ({
@@ -72,6 +79,7 @@ const MyForm = ({
                         name={`experiences[${index}].start_date`}
                         control="date"
                         setFieldValue={setFieldValue}
+                        label="დაწყების რიცხვი"
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -79,6 +87,7 @@ const MyForm = ({
                         name={`experiences[${index}].due_date`}
                         control="date"
                         setFieldValue={setFieldValue}
+                        label="დამთავრების რიცხვი"
                       />
                     </Grid>
                     {/* textarea */}
@@ -94,19 +103,27 @@ const MyForm = ({
                     <Grid item xs={12}>
                       <hr />
                     </Grid>
-                    <Grid item>
-                      <Button
-                        type="button"
-                        onClick={() => dirty && isValid && push(formObj)}
-                        sx={{
-                          width: "289px",
-                          color: "#FFFFFF",
-                          backgroundColor: "#62A1EB",
-                          margin: "50px 0",
-                          padding: "12px 0",
-                        }}>
-                        ახალი გამოცდილების დამატება
-                      </Button>
+                    <Grid
+                      item
+                      xs={12}
+                      display="flex"
+                      justifyContent="space-between"
+                      alignItems="center">
+                      <Grid item>
+                        <AddMoreBtn
+                          formObj={formObj}
+                          push={push}
+                          isValid={isValid}
+                          dirty={dirty}
+                        />
+                      </Grid>
+                      <Grid item>
+                        <RemoveBtn
+                          length={values.experiences.length}
+                          index={index}
+                          remove={remove}
+                        />
+                      </Grid>
                     </Grid>
                   </Grid>
                 );

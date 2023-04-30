@@ -3,7 +3,8 @@
     width: 822px;
     min-height: 1080px;
     max-height: auto;
-    padding: 50px 70px 50px 70px;
+    padding: 50px 70px 100px 70px;
+    position: relative;
 }
 
 .personal-info {
@@ -95,4 +96,13 @@
 
 .education .institute {
     font-weight: 600;
+}
+
+.finishedResume-logo {
+    margin-top: 100px;
+}
+
+.footer-logo {
+    position: absolute;
+    bottom: 20px;
 }

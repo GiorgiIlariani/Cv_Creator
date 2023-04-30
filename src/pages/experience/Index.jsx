@@ -6,12 +6,18 @@ import { Formik } from "formik";
 // navigation
 import { useNavigate } from "react-router-dom";
 
-// helper components
+// header and layout components
 import Header from "../../components/header";
 import Layout from "../../components/layout";
+
+// form
 import MyForm from "./MyForm";
+
+//helpers
 import { experienceValidationSchema } from "../../components/formikHelpers/validationSchema";
 import { experienceInitialValues } from "../../components/formikHelpers/initialValues";
+
+// main resume
 import Resume from "../cv/Index";
 
 const Experience = () => {

@@ -10,6 +10,7 @@ import Experience from "./pages/experience/Index";
 import Education from "./pages/education/Index";
 import Resume from "./pages/cv/Index";
 import FinishedResume from "./pages/finishedResume/Index";
+import Error from "./pages/error/Index";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/education" element={<Education />} />
       <Route path="/resume" element={<Resume />} />
       <Route path="/finishedResume" element={<FinishedResume />} />
+      <Route path="*" element={<Error />}></Route>
     </Routes>
   );
 };

@@ -1,10 +1,22 @@
-import { Button, Grid } from "@mui/material";
-import { FieldArray, Form } from "formik";
 import React, { useEffect } from "react";
+
+// mui material
+import { Grid } from "@mui/material";
+
+// formik
+import { FieldArray, Form } from "formik";
+
+// router link
 import { Link } from "react-router-dom";
+
+// formik helpers
 import FormControl from "../../components/formikHelpers/FormControl";
+
+// buttons
 import BackBtn from "../../components/UI/BackBtn";
 import NextBtn from "../../components/UI/NextBtn";
+import AddMoreBtn from "../../components/UI/AddMoreBtn";
+import RemoveBtn from "../../components/UI/RemoveBtn";
 
 const MyForm = ({
   values,
@@ -51,23 +63,26 @@ const MyForm = ({
                         below_text="მინიმუმ ორი სიმბოლო"
                       />
                     </Grid>
-                    <Grid item xs={6}>
-                      <FormControl
-                        control="select"
-                        setFieldValue={setFieldValue}
-                        name={`educations[${index}].degree`}
-                        value={value.degree}
-                        id={`educations[${index}].degree_id`}
-                      />
+                    <Grid item container spacing={5} alignItems="end">
+                      <Grid item xs={6}>
+                        <FormControl
+                          control="select"
+                          setFieldValue={setFieldValue}
+                          name={`educations[${index}].degree`}
+                          value={value.degree}
+                          id={`educations[${index}].degree_id`}
+                        />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <FormControl
+                          name={`educations[${index}].due_date`}
+                          control="date"
+                          setFieldValue={setFieldValue}
+                          label="დამთავრების რიცხვი"
+                        />
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                      <FormControl
-                        name={`educations[${index}].due_date`}
-                        control="date"
-                        setFieldValue={setFieldValue}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} paddingBottom="50px">
                       <FormControl
                         control="textarea"
                         name={`educations[${index}].description`}
@@ -76,19 +91,30 @@ const MyForm = ({
                         minRows={7}
                       />
                     </Grid>
-                    <Grid item xs={6}>
-                      <Button
-                        type="button"
-                        onClick={() => dirty && isValid && push(formObj)}
-                        sx={{
-                          width: "289px",
-                          color: "#FFFFFF",
-                          backgroundColor: "#62A1EB",
-                          margin: "50px 0",
-                          padding: "12px 0",
-                        }}>
-                        ახალი განათლების დამატება
-                      </Button>
+                    <Grid item xs={12}>
+                      <hr />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      display="flex"
+                      justifyContent="space-between"
+                      alignItems="center">
+                      <Grid item>
+                        <AddMoreBtn
+                          formObj={formObj}
+                          push={push}
+                          isValid={isValid}
+                          dirty={dirty}
+                        />
+                      </Grid>
+                      <Grid item>
+                        <RemoveBtn
+                          length={values.educations.length}
+                          index={index}
+                          remove={remove}
+                        />
+                      </Grid>
                     </Grid>
                   </Grid>
                 );
