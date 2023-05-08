@@ -40,6 +40,7 @@ export const experienceValidationSchema = Yup.object().shape({
         .required("მინიმუმ ორი სიმბოლო"),
       start_date: Yup.date().required(""),
       due_date: Yup.date().required(""),
+      description: Yup.string().required(),
     })
   ),
 });
@@ -54,6 +55,7 @@ export const educationValidationSchema = Yup.object().shape({
         .required("მინიმუმ ორი სიმბოლო"),
       degree: Yup.string().required(""),
       due_date: Yup.date().required(""),
+      description: Yup.string().required(),
     })
   ),
 });

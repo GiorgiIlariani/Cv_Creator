@@ -8,7 +8,7 @@ import { useField } from "formik";
 
 const TextareaComponent = (props) => {
   const { label, name, placeholder, minRows } = props;
-  const [field] = useField(name);
+  const [field, meta] = useField(name);
 
   return (
     <>
@@ -21,6 +21,7 @@ const TextareaComponent = (props) => {
         {...field}
         placeholder={placeholder}
         sx={{ marginTop: "10px" }}
+        error={meta.error && meta.touched && meta}
       />
     </>
   );
